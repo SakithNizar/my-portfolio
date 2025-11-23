@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Code2, 
   Layout, 
@@ -77,7 +77,6 @@ const GlassCard: React.FC<GlassCardProps> = ({ children, className = "", hoverEf
     transition={{ duration: 0.5 }}
     className={`bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-3xl relative overflow-hidden group ${className} ${onClick ? 'cursor-pointer' : ''}`}
   >
-    {/* Subtle sheen effect */}
     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     <div className="relative z-10 h-full">
       {children}
@@ -204,9 +203,10 @@ const DevPage = ({ onBack }: { onBack: () => void }) => {
 export default function App() {
   // State to manage the current view: 'home', 'uiux', or 'dev'
   const [currentView, setCurrentView] = useState<'home' | 'uiux' | 'dev'>('home');
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   
+  // REMOVED: const { scrollYProgress } = useScroll(); and const y = ... 
+  // because they were unused and causing linter errors.
+
   const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
@@ -248,8 +248,8 @@ export default function App() {
                 transition={{ delay: 0.3 }}
                 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-[1.1]"
               >
-                Sakith <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Nizar.</span>
+                Mohamed <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Sakith.</span>
               </motion.h1>
               
               <motion.div 
@@ -289,7 +289,6 @@ export default function App() {
               </motion.div>
             </div>
 
-            {/* Abstract Avatar */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -303,8 +302,6 @@ export default function App() {
                    <div className="absolute inset-0 border-2 border-blue-500/20 rounded-full z-30 pointer-events-none"></div>
                    <div className="absolute inset-8 border border-violet-500/20 rounded-full z-30 pointer-events-none"></div>
                 </div>
-                
-                {/* Orbiting Elements */}
                 <motion.div 
                   animate={{ rotate: 360 }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -316,7 +313,6 @@ export default function App() {
             </motion.div>
           </div>
           
-          {/* Scroll Indicator */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: [0, 10, 0] }}
@@ -333,7 +329,6 @@ export default function App() {
         <section id="about" className="py-24">
           <SectionHeading subtitle>About Me</SectionHeading>
           <div className="grid md:grid-cols-3 gap-6 auto-rows-fr">
-            
             <GlassCard className="md:col-span-2 flex flex-col justify-center">
               <div className="flex items-start gap-4 mb-4">
                 <div className="p-3 bg-blue-500/20 rounded-xl text-blue-400"><Globe size={24} /></div>
@@ -346,7 +341,6 @@ export default function App() {
                 </div>
               </div>
             </GlassCard>
-
             <GlassCard className="bg-gradient-to-br from-blue-900/20 to-transparent border-blue-500/20">
               <div className="h-full flex flex-col justify-between">
                 <div>
@@ -357,12 +351,8 @@ export default function App() {
                     GPA 3.8 / 4.0
                   </div>
                 </div>
-                <div className="mt-6 flex gap-2">
-                    {[1,2,3].map(i => <div key={i} className="h-1 flex-1 bg-blue-500/30 rounded-full overflow-hidden"><div className="h-full bg-blue-400 w-[80%]"></div></div>)}
-                </div>
               </div>
             </GlassCard>
-
             <GlassCard>
                <h4 className="text-sm uppercase tracking-widest text-green-400 font-bold mb-4">Current Role</h4>
                <div className="flex items-center gap-3 mb-2">
@@ -370,9 +360,7 @@ export default function App() {
                  <h3 className="text-lg font-bold text-white">Intern Software Engineer</h3>
                </div>
                <p className="text-slate-400 text-sm">Gamage Recruiters</p>
-               <p className="text-slate-500 text-xs mt-4 leading-relaxed">Focusing on full-stack development and automated testing pipelines.</p>
             </GlassCard>
-
             <GlassCard className="md:col-span-2">
                <h4 className="text-sm uppercase tracking-widest text-violet-400 font-bold mb-6">Core Competencies</h4>
                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -384,14 +372,12 @@ export default function App() {
                   ))}
                </div>
             </GlassCard>
-
           </div>
         </section>
 
         {/* --- Skills Section --- */}
         <section id="skills" className="py-24 relative">
           <SectionHeading subtitle>Tech Stack</SectionHeading>
-          
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
              <SkillBadge icon={Figma} name="Figma" color="text-pink-400" />
              <SkillBadge icon={Code2} name="React" color="text-cyan-400" />
@@ -407,11 +393,7 @@ export default function App() {
         <section id="experience" className="py-24">
            <SectionHeading subtitle>Experience</SectionHeading>
            <div className="relative pl-8 md:pl-0 md:max-w-3xl mx-auto space-y-12">
-              
-              {/* Vertical Line */}
               <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500 via-slate-700 to-transparent transform -translate-x-1/2"></div>
-
-              {/* Item 1 */}
               <motion.div 
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -425,7 +407,6 @@ export default function App() {
                     Developing scalable web applications using React and Spring Boot. Collaborating with cross-functional teams.
                  </p>
               </motion.div>
-
            </div>
         </section>
 
@@ -509,16 +490,10 @@ export default function App() {
         {/* --- Contact Section --- */}
         <section id="contact" className="py-24 md:max-w-4xl mx-auto">
            <GlassCard className="relative overflow-hidden">
-             {/* Decoration */}
              <div className="absolute -top-24 -right-24 w-48 h-48 bg-blue-600 rounded-full blur-[80px] opacity-30"></div>
-
              <div className="grid md:grid-cols-2 gap-12 relative z-10">
                <div>
                  <h2 className="text-3xl font-bold text-white mb-4">Let's create something amazing.</h2>
-                 <p className="text-slate-400 mb-8">
-                   Whether you have a question, a project proposal, or just want to discuss the latest in tech, feel free to reach out.
-                 </p>
-                 
                  <div className="space-y-4">
                     <a href="mailto:sakithmohamed54@gmail.com" className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors border border-white/5">
                        <div className="p-3 bg-blue-500/20 rounded-full text-blue-400"><Mail size={20} /></div>
@@ -530,12 +505,13 @@ export default function App() {
                     </a>
                  </div>
                </div>
-
                <form className="space-y-4" onSubmit={handleContactSubmit}>
                   <input type="text" className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="Your name" />
                   <input type="email" className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="your@email.com" />
                   <textarea rows={4} className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="Message..."></textarea>
-                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-bold text-white">Send Message</button>
+                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-bold text-white flex items-center justify-center gap-2">
+                    Send Message <Send size={18} />
+                  </button>
                </form>
              </div>
            </GlassCard>
@@ -562,7 +538,7 @@ export default function App() {
           {navItems.map((item) => (
             <a 
               key={item.name} 
-              href={currentView === 'home' ? item.href : '#'} // Disable links when not on home or handle differently
+              href={currentView === 'home' ? item.href : '#'} 
               onClick={() => { if(currentView !== 'home') setCurrentView('home'); }}
               className="text-sm font-medium text-slate-400 hover:text-white transition-colors relative group"
             >
@@ -583,7 +559,6 @@ export default function App() {
         <footer className="text-center text-slate-600 text-sm py-12 border-t border-white/5">
           <p>© {new Date().getFullYear()} Sakith Nizar. Designed & Built with React.</p>
         </footer>
-
       </main>
     </div>
   );
