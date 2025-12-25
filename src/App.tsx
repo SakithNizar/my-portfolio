@@ -256,8 +256,8 @@ export default function App() {
                 transition={{ delay: 0.3 }}
                 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-[1.1]"
               >
-                Mohamed <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Sakith.</span>
+                Sakith<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Nizar.</span>
               </motion.h1>
               
               <motion.div 
