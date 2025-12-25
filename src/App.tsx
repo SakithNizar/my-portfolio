@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
-  Code2, 
+ Code2, 
   Layout, 
   Bug, 
   Github, 
   Linkedin, 
   Mail, 
   ChevronDown, 
+  Send,
   Cpu, 
   Database, 
   Globe, 
@@ -15,11 +16,20 @@ import {
   Figma, 
   CheckCircle2,
   Terminal,
-  Send,
   Palette,
   Smartphone,
   ArrowLeft,
-  ArrowRight
+  ArrowRight,
+  FileJson,
+  Layers,
+  Upload,
+  CreditCard,
+  GitBranch,
+  Lock,
+  Cloud, 
+  Gem, 
+  PenTool,
+  Award 
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -162,7 +172,7 @@ const DevPage = ({ onBack }: { onBack: () => void }) => {
             <div className="h-48 bg-slate-800/50 rounded-xl mb-6 flex items-center justify-center">
                <Code2 size={48} className="text-slate-600" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">E-Commerce Platform</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">erce Platform</h3>
             <p className="text-slate-400 text-sm mb-4">Full-stack MERN application with Stripe payment integration.</p>
             <div className="flex gap-2">
                <span className="text-xs px-2 py-1 rounded bg-blue-500/10 text-blue-300 border border-blue-500/20">React</span>
@@ -353,20 +363,16 @@ export default function App() {
                   <h4 className="text-sm uppercase tracking-widest text-blue-400 font-bold mb-4">Education</h4>
                   <h3 className="text-xl font-bold text-white">Higher National Diploma</h3>
                   <p className="text-slate-400 text-sm mt-1">Information Technology</p>
-                  <div className="mt-4 inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 text-xs font-mono border border-blue-500/20">
-                    GPA 3.8 / 4.0
-                  </div>
+                 
                 </div>
-                <div className="mt-6 flex gap-2">
-                    {[1,2,3].map(i => <div key={i} className="h-1 flex-1 bg-blue-500/30 rounded-full overflow-hidden"><div className="h-full bg-blue-400 w-[80%]"></div></div>)}
-                </div>
+               
               </div>
             </GlassCard>
 
             <GlassCard>
-               <h4 className="text-sm uppercase tracking-widest text-green-400 font-bold mb-4">Current Role</h4>
+               <h4 className="text-sm uppercase tracking-widest text-orange-400 font-bold mb-4">Current Role</h4>
                <div className="flex items-center gap-3 mb-2">
-                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                 <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
                  <h3 className="text-lg font-bold text-white">Intern Software Engineer</h3>
                </div>
                <p className="text-slate-400 text-sm">Gamage Recruiters</p>
@@ -388,18 +394,40 @@ export default function App() {
           </div>
         </section>
 
-        {/* --- Skills Section --- */}
-        <section id="skills" className="py-24 relative">
+         <section id="skills" className="py-24 relative">
           <SectionHeading subtitle>Tech Stack</SectionHeading>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+             {/* Frontend */}
+             <SkillBadge icon={Code2} name="React.js" color="text-cyan-400" />
+             <SkillBadge icon={Cpu} name="Next.js" color="text-white" />
+             <SkillBadge icon={FileJson} name="JavaScript" color="text-yellow-400" />
+             <SkillBadge icon={Smartphone} name="React Native" color="text-blue-400" />
+             <SkillBadge icon={Layers} name="Expo" color="text-slate-200" />
+             <SkillBadge icon={Palette} name="TailwindCSS" color="text-cyan-300" />
+             <SkillBadge icon={Layout} name="Bootstrap" color="text-purple-500" />
+             
+             {/* Design */}
              <SkillBadge icon={Figma} name="Figma" color="text-pink-400" />
-             <SkillBadge icon={Code2} name="React" color="text-cyan-400" />
+             <SkillBadge icon={PenTool} name="Adobe XD" color="text-pink-500" />
+             <SkillBadge icon={Gem} name="Sketch" color="text-yellow-500" />
+
+             {/* Backend & DB */}
              <SkillBadge icon={Server} name="Node.js" color="text-green-500" />
-             <SkillBadge icon={Database} name="SQL" color="text-blue-400" />
-             <SkillBadge icon={Cpu} name="Spring" color="text-green-400" />
-             <SkillBadge icon={Github} name="Git" color="text-orange-500" />
+             <SkillBadge icon={Server} name="Express.js" color="text-slate-400" />
+             <SkillBadge icon={Cpu} name="Spring Boot" color="text-green-400" />
+             <SkillBadge icon={Database} name="MongoDB" color="text-green-500" />
+             <SkillBadge icon={Database} name="MySQL" color="text-blue-500" />
+             <SkillBadge icon={Lock} name="JWT Auth" color="text-red-400" />
+
+             {/* Tools & Deploy */}
+             <SkillBadge icon={GitBranch} name="Git" color="text-orange-500" />
+             <SkillBadge icon={Github} name="GitHub" color="text-white" />
              <SkillBadge icon={Terminal} name="Postman" color="text-orange-400" />
+             <SkillBadge icon={Cloud} name="Vercel/Render/Railway" color="text-white" />
+             <SkillBadge icon={Upload} name="Multer" color="text-yellow-200" />
+             <SkillBadge icon={Mail} name="Nodemailer/JavaMail" color="text-blue-300" />
+             <SkillBadge icon={CreditCard} name="Stripe/PayHere" color="text-purple-400" />
           </div>
         </section>
 
@@ -446,25 +474,25 @@ export default function App() {
             
             <div className="grid md:grid-cols-2 gap-8">
               <GlassCard className="group" hoverEffect={false}>
-                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 to-violet-500"></div>
-                 <div className="h-48 bg-slate-800/50 rounded-xl mb-6 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center">
-                      <Layout size={48} className="text-slate-600" />
-                    </div>
-                 </div>
-                 <h3 className="text-2xl font-bold text-white mb-2">FinTech Dashboard</h3>
-                 <p className="text-slate-400 text-sm mb-6 line-clamp-3">A complete redesign of a banking interface.</p>
-              </GlassCard>
+            <div className="h-48 rounded-xl mb-6 overflow-hidden relative">
+               <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="FinTech Dashboard" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">Employee Management System Dashboard</h3>
+            <p className="text-slate-400 text-sm mb-4">A complete redesign of a banking interface focusing on accessibility and dark mode aesthetics.</p>
+            <div className="flex gap-2">
+               <span className="text-xs px-2 py-1 rounded bg-pink-500/10 text-pink-300 border border-pink-500/20">Figma</span>
+            </div>
+        </GlassCard>
               <GlassCard className="group" hoverEffect={false}>
-                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-indigo-500"></div>
-                 <div className="h-48 bg-slate-800/50 rounded-xl mb-6 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center">
-                      <Smartphone size={48} className="text-slate-600" />
-                    </div>
-                 </div>
-                 <h3 className="text-2xl font-bold text-white mb-2">Travel App</h3>
-                 <p className="text-slate-400 text-sm mb-6 line-clamp-3">User-centric mobile application design.</p>
-              </GlassCard>
+            <div className="h-48 rounded-xl mb-6 overflow-hidden relative">
+               <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="Travel App" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">E-Commerce Portal</h3>
+            <p className="text-slate-400 text-sm mb-4">User-centric mobile application design for travel planning and itinerary management.</p>
+            <div className="flex gap-2">
+               <span className="text-xs px-2 py-1 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">Figma</span>
+            </div>
+        </GlassCard>
             </div>
           </div>
 
@@ -472,7 +500,7 @@ export default function App() {
             <div className="flex justify-between items-center mb-8">
               <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                 <div className="p-2 bg-blue-500/20 rounded-lg"><Terminal className="text-blue-400" size={24} /></div>
-                Software Engineering
+                Web Development
               </h3>
               <button onClick={() => setCurrentView('dev')} className="text-sm text-slate-400 hover:text-white flex items-center gap-1 transition-colors group">
                 See More <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -480,30 +508,74 @@ export default function App() {
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
-               <GlassCard className="group" hoverEffect={false}>
+            <GlassCard className="group" hoverEffect={false}>
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-500"></div>
-                  <div className="h-48 bg-slate-800/50 rounded-xl mb-6 overflow-hidden relative">
-                     <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center">
-                       <Code2 size={48} className="text-slate-600" />
-                     </div>
+                  <div className="h-48 rounded-xl mb-6 overflow-hidden relative">
+                     <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=800&q=80" alt="E-Commerce" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">E-Commerce Platform</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">Food Booking Platform</h3>
                   <p className="text-slate-400 text-sm mb-6 line-clamp-3">Full-stack MERN application.</p>
                </GlassCard>
 
+
+               
                <GlassCard className="group" hoverEffect={false}>
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 to-orange-500"></div>
-                  <div className="h-48 bg-slate-800/50 rounded-xl mb-6 overflow-hidden relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center">
-                       <Bug size={48} className="text-slate-600" />
-                     </div>
+                  <div className="h-48 rounded-xl mb-6 overflow-hidden relative">
+                      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="AutoTest Suite" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">AutoTest Suite</h3>
+                  <h3 className="text-2xl font-bold text-white mb-2">Online Shopping System</h3>
                   <p className="text-slate-400 text-sm mb-6 line-clamp-3">Automated testing framework using Selenium.</p>
                </GlassCard>
             </div>
           </div>
 
+        </section>
+
+         {/* --- Certifications Section --- */}
+        <section id="certifications" className="py-24 relative">
+           <SectionHeading subtitle>Certifications & Awards</SectionHeading>
+           <div className="grid md:grid-cols-2 gap-6">
+              <GlassCard className="flex flex-row items-center gap-4 group hover:bg-white/5 transition-colors">
+                 <div className="p-3 bg-yellow-500/20 rounded-xl text-yellow-400 group-hover:scale-110 transition-transform">
+                    <Award size={32} />
+                 </div>
+                 <div>
+                    <h3 className="text-xl font-bold text-white">Full Stack Web Development Bootcamp</h3>
+                    <p className="text-slate-400 text-sm">Udemy • Issued 2023</p>
+                 </div>
+              </GlassCard>
+
+              <GlassCard className="flex flex-row items-center gap-4 group hover:bg-white/5 transition-colors">
+                 <div className="p-3 bg-blue-500/20 rounded-xl text-blue-400 group-hover:scale-110 transition-transform">
+                    <Award size={32} />
+                 </div>
+                 <div>
+                    <h3 className="text-xl font-bold text-white">Oracle Certified Associate, Java SE 8</h3>
+                    <p className="text-slate-400 text-sm">Oracle • Issued 2022</p>
+                 </div>
+              </GlassCard>
+
+              <GlassCard className="flex flex-row items-center gap-4 group hover:bg-white/5 transition-colors">
+                 <div className="p-3 bg-purple-500/20 rounded-xl text-purple-400 group-hover:scale-110 transition-transform">
+                    <Award size={32} />
+                 </div>
+                 <div>
+                    <h3 className="text-xl font-bold text-white">Google UX Design Professional Certificate</h3>
+                    <p className="text-slate-400 text-sm">Coursera • Issued 2023</p>
+                 </div>
+              </GlassCard>
+              
+               <GlassCard className="flex flex-row items-center gap-4 group hover:bg-white/5 transition-colors">
+                 <div className="p-3 bg-green-500/20 rounded-xl text-green-400 group-hover:scale-110 transition-transform">
+                    <Award size={32} />
+                 </div>
+                 <div>
+                    <h3 className="text-xl font-bold text-white">Agile Project Management</h3>
+                    <p className="text-slate-400 text-sm">Google • Issued 2024</p>
+                 </div>
+              </GlassCard>
+           </div>
         </section>
 
         {/* --- Contact Section --- */}
@@ -530,12 +602,13 @@ export default function App() {
                     </a>
                  </div>
                </div>
-
                <form className="space-y-4" onSubmit={handleContactSubmit}>
                   <input type="text" className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="Your name" />
                   <input type="email" className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="your@email.com" />
                   <textarea rows={4} className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="Message..."></textarea>
-                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-bold text-white">Send Message</button>
+                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-bold text-white flex items-center justify-center gap-2">
+                    Send Message <Send size={18} />
+                  </button>
                </form>
              </div>
            </GlassCard>
