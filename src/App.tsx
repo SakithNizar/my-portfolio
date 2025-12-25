@@ -602,11 +602,20 @@ export default function App() {
                     </a>
                  </div>
                </div>
-               <form className="space-y-4" onSubmit={handleContactSubmit}>
-                  <input type="text" className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="Your name" />
-                  <input type="email" className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="your@email.com" />
-                  <textarea rows={4} className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white" placeholder="Message..."></textarea>
-                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-bold text-white flex items-center justify-center gap-2">
+                <form className="space-y-4" onSubmit={handleContactSubmit}>
+                  <div>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Name</label>
+                    <input name="name" type="text" className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Your name" required />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Email</label>
+                    <input name="email" type="email" className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="your@email.com" required />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase text-slate-500 mb-2">Message</label>
+                    <textarea name="message" rows={4} className="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-blue-500 transition-colors" placeholder="Tell me about your project..." required></textarea>
+                  </div>
+                  <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-violet-600 rounded-lg font-bold text-white hover:opacity-90 transition-opacity flex justify-center items-center gap-2 shadow-lg shadow-blue-900/20">
                     Send Message <Send size={18} />
                   </button>
                </form>
